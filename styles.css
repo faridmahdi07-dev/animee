@@ -328,7 +328,25 @@ footer {
   background: rgba(230, 57, 70, 0.35);
   color: #fff;
 }
+.ranking {
+    text-align: center;
+    padding: 20px;
+}
 
+.ranking div {
+    margin: 10px;
+}
+
+.ranking input {
+    width: 60px;
+    padding: 5px;
+}
+
+button {
+    padding: 10px 15px;
+    margin: 10px;
+    cursor: pointer;
+}
 
 @media (max-width: 600px) {
   header {
