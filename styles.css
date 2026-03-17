@@ -347,6 +347,74 @@ button {
     margin: 10px;
     cursor: pointer;
 }
+.web-quiz {
+    max-width: 900px;
+    width: 95%;
+    margin: 40px auto;
+    background-color: var(--bg-panel);
+    padding: 40px 60px;
+    border-radius: 15px;
+    text-align: center;
+    border: 2px solid var(--accent-red);
+    box-shadow: var(--shadow-card);
+}
+
+.web-quiz h2 {
+    font-size: clamp(2rem, 5vw, 3rem);
+    color: var(--accent-gold);
+    margin-bottom: 25px;
+}
+
+.web-quiz #question {
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
+    margin-bottom: 30px;
+}
+
+.web-quiz #options button {
+    display: block;
+    width: 90%;
+    margin: 15px auto;
+    padding: 18px 0;
+    font-size: 1.8rem;
+    border-radius: 12px;
+    background-color: var(--accent-blue);
+    color: var(--text-main);
+    border: none;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.web-quiz #options button:hover {
+    background-color: var(--accent-red);
+    transform: scale(1.05);
+}
+
+.web-quiz #result {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--accent-gold);
+    margin-top: 25px;
+}
+
+.web-quiz #score {
+    font-size: 1.6rem;
+    margin-top: 15px;
+}
+
+.web-quiz button[onclick="nextQuestion()"] {
+    padding: 18px 40px;
+    font-size: 2rem;
+    margin-top: 30px;
+    background-color: var(--accent-red);
+    border-radius: 12px;
+    transition: 0.3s;
+}
+
+.web-quiz button[onclick="nextQuestion()"]:hover {
+    background-color: var(--accent-gold);
+    transform: scale(1.05);
+}
+
 
 @media (max-width: 600px) {
   header {
