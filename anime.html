@@ -6,6 +6,7 @@
     <title>My Anime Page</title>
     <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
 
 <header>
@@ -19,14 +20,40 @@
     <a href="blackclover.html">Black Clover</a>
 </nav>
 
-<section class="intro">
-    <h2>Choose your anime to explore!</h2>
-    <p>Click one of the links above to see awesome content about your favorite anime.</p>
-</section>
+
 
 <footer>
     <p>© 2026 My Anime Page</p>
 </footer>
 
 </body>
+<section class="intro">
+    <h2 id="welcome"></h2>
+    <p>Click one of the links above to see awesome content about your favorite anime.</p>
+
+    <button onclick="recommendAnime()">🎲 Recommend Me an Anime</button>
+    <p id="recommendation"></p>
+</section>
+
+<script>
+// Dynamic welcome message based on time
+let welcomeText = document.getElementById("welcome");
+let hour = new Date().getHours();
+
+
+
+// Random anime recommendation
+function recommendAnime() {
+    let animes = [
+        "Tokyo Ghoul",
+        "Solo Leveling",
+        "Jujutsu Kaisen",
+        "Black Clover"
+    ];
+
+    let random = Math.floor(Math.random() * animes.length);
+    document.getElementById("recommendation").textContent =
+        "👉 You should watch: " + animes[random];
+}
+</script>
 </html>
