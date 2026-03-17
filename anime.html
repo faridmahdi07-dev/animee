@@ -56,4 +56,117 @@ function recommendAnime() {
         "👉 You should watch: " + animes[random];
 }
 </script>
+
+
+<section class="web-quiz">
+  <h2>💻 Advanced Web Development Quiz!</h2>
+  <p>Test your advanced knowledge of HTML, CSS, and JavaScript!</p>
+
+  <div id="quizContainer">
+    <p id="question"></p>
+    <div id="options"></div>
+  </div>
+
+  <p id="result"></p>
+  <p id="score">Score: 0</p>
+  <button onclick="nextQuestion()">Start Quiz 🚀</button>
+</section>
+
+<script>
+const questions = [
+  {
+    question: "Which HTML5 element is used to define self-contained content that could be distributed independently?",
+    options: ["<article>", "<section>", "<div>", "<aside>"],
+    answer: "<article>"
+  },
+  {
+    question: "In CSS, which selector matches elements that are the only child of their parent?",
+    options: [":only-child", ":first-child", ":last-child", ":nth-child(1)"],
+    answer: ":only-child"
+  },
+  {
+    question: "What will the following JavaScript output? `console.log(0.1 + 0.2 === 0.3);`",
+    options: ["true", "false", "undefined", "Error"],
+    answer: "false"
+  },
+  {
+    question: "Which HTML attribute is used to provide an accessible label for form elements?",
+    options: ["aria-label", "title", "alt", "role"],
+    answer: "aria-label"
+  },
+  {
+    question: "In CSS Grid, which property defines the spacing between rows and columns?",
+    options: ["gap", "spacing", "grid-gap", "grid-spacing"],
+    answer: "gap"
+  },
+  {
+    question: "Which JavaScript method converts a JSON string into an object?",
+    options: ["JSON.parse()", "JSON.stringify()", "JSON.convert()", "JSON.objectify()"],
+    answer: "JSON.parse()"
+  },
+  {
+    question: "What is the result of this JavaScript code? `typeof NaN`",
+    options: ["number", "NaN", "undefined", "object"],
+    answer: "number"
+  },
+  {
+    question: "In CSS, which pseudo-class targets an element when it gains focus via keyboard navigation?",
+    options: [":focus", ":hover", ":active", ":target"],
+    answer: ":focus"
+  },
+  {
+    question: "Which HTML element allows embedding an external SVG directly in the document?",
+    options: ["<svg>", "<object>", "<canvas>", "<embed>"],
+    answer: "<svg>"
+  },
+  {
+    question: "Which JavaScript function is used to delay execution of a function for a certain time?",
+    options: ["setTimeout()", "setInterval()", "delay()", "wait()"],
+    answer: "setTimeout()"
+  }
+];
+
+let currentIndex = 0;
+let score = 0;
+
+function nextQuestion() {
+  document.getElementById("result").innerText = "";
+  if (currentIndex >= questions.length) {
+    document.getElementById("quizContainer").innerHTML = `<h3>🎉 Quiz Finished!</h3><p>Final Score: ${score}/${questions.length}</p>`;
+    return;
+  }
+
+  const q = questions[currentIndex];
+  document.getElementById("question").innerText = q.question;
+
+  const optionsDiv = document.getElementById("options");
+  optionsDiv.innerHTML = "";
+  q.options.forEach(opt => {
+    const btn = document.createElement("button");
+    btn.innerText = opt;
+    btn.style.margin = "5px";
+    btn.style.padding = "5px 10px";
+    btn.style.border = "2px solid #333";
+    btn.style.borderRadius = "5px";
+    btn.style.cursor = "pointer";
+    btn.onclick = () => checkAnswer(opt);
+    optionsDiv.appendChild(btn);
+  });
+}
+
+function checkAnswer(selected) {
+  const correct = questions[currentIndex].answer;
+  if (selected === correct) {
+    score++;
+    document.getElementById("result").innerText = "✅ Correct!";
+    document.getElementById("result").style.color = "green";
+  } else {
+    document.getElementById("result").innerText = `❌ Wrong! Correct: ${correct}`;
+    document.getElementById("result").style.color = "red";
+  }
+  document.getElementById("score").innerText = `Score: ${score}`;
+  currentIndex++;
+  setTimeout(nextQuestion, 2000);
+}
+</script>
 </html>

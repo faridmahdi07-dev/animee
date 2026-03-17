@@ -61,6 +61,39 @@
     </ul>
 </section>
 
+
+<section class="game">
+    <h2>🎮 Catch the Button!</h2>
+    <p>Click the button before it escapes 😈</p>
+
+    <button id="movingBtn" onclick="catchButton()">Catch me!</button>
+
+    <p id="score">Score: 0</p>
+</section>
+
+<section class="anime-vote-game">
+    <h2>🎮 Choose Your Favorite Anime!</h2>
+    <p>Select your favorite anime and see which one wins!</p>
+
+    <label>
+        <input type="radio" name="anime" value="Tokyo Ghoul"> Tokyo Ghoul
+    </label><br>
+    <label>
+        <input type="radio" name="anime" value="Solo Leveling"> Solo Leveling
+    </label><br>
+    <label>
+        <input type="radio" name="anime" value="Jujutsu Kaisen"> Jujutsu Kaisen
+    </label><br>
+    <label>
+        <input type="radio" name="anime" value="Black Clover"> Black Clover
+    </label><br><br>
+
+    <button onclick="voteAnime()">Vote!</button>
+    <p id="voteResult"></p>
+</section>
+
+
+
 <footer>
     <p>© 2026 My Anime Page</p>
 </footer>
