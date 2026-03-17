@@ -64,6 +64,15 @@
 <footer>
     <p>© 2026 My Anime Page</p>
 </footer>
+<script>
+const soloImgs = document.querySelectorAll('.card img');
 
+soloImgs.forEach(img => {
+  img.addEventListener('click', () => {
+    img.classList.add('effect-pop');
+    setTimeout(() => img.classList.remove('effect-pop'), 600);
+  });
+});
+</script>
 </body>
 </html>
