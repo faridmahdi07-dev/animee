@@ -417,6 +417,52 @@ button {
 .effect-pop {
     animation: popScale 0.6s ease forwards;
 }
+.game-box {
+    max-width: 700px;
+    margin: 50px auto;
+    text-align: center;
+    background: var(--bg-panel);
+    padding: 40px;
+    border-radius: 12px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .game-box img {
+    width: 100%;
+    max-width: 400px;
+    border-radius: 12px;
+    filter: blur(15px);
+    transition: filter 0.5s ease;
+  }
+
+  .game-box img.reveal {
+    filter: blur(0px);
+  }
+
+  button {
+    padding: 10px 20px;
+    margin-top: 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    border: none;
+    border-radius: 8px;
+    background: var(--accent-blue);
+    color: #fff;
+    transition: transform 0.2s ease, background 0.3s ease;
+  }
+
+  button:hover {
+    background: var(--accent-gold);
+    transform: scale(1.1);
+  }
+
+  #answer {
+    margin-top: 20px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: var(--accent-red);
+  }
+
 
 @keyframes popScale {
     0% { transform: scale(1); box-shadow: 0 0 0 rgba(230,57,70,0); }

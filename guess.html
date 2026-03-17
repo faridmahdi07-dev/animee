@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Anime Guessing Game</title>
+<link rel="stylesheet" href="styles.css">
+
+</head>
+<body>
+
+<header>
+  <h1>Anime Guessing Game</h1>
+</header>
+
+<nav>
+  <a href="anime.html">Home</a>
+  <a href="animeguess.html">Guessing Game</a>
+</nav>
+
+<section>
+  <div class="game-box">
+    <img id="animeImage" src="https://i.pinimg.com/736x/51/aa/37/51aa37857e2987ab9dc7ea066bfaa5a7.jpg" alt="Anime Character">
+    <div id="answer"></div>
+    <button id="revealBtn">Reveal Character</button>
+    <button id="nextBtn">Next Character</button>
+  </div>
+</section>
+
+<script>
+  const characters = [
+    {
+      name: "Sung Jin-Woo",
+      img: "https://i.pinimg.com/736x/51/aa/37/51aa37857e2987ab9dc7ea066bfaa5a7.jpg"
+    },
+    {
+      name: "Kaneki Ken",
+      img: "https://static.wikia.nocookie.net/omniversal-battlefield/images/0/0a/Ken_Kaneki.jpg/revision/latest?cb=20171031101134"
+    },
+    {
+      name: "Cha Hae-In",
+      img: "https://preview.redd.it/what-are-your-honest-thoughts-about-cha-hae-in-v0-kv87scknsymc1.jpg?width=850&format=pjpg&auto=webp&s=69b0d55d4798191291023c3c8d85db59b603de8c"
+    },
+    {
+      name: "Touka Kirishima",
+      img: "https://i.pinimg.com/564x/bb/80/94/bb8094d17c246117df41576e7ecec84a.jpg"
+    }
+  ];
+
+  let currentIndex = 0;
+  const animeImage = document.getElementById("animeImage");
+  const answer = document.getElementById("answer");
+  const revealBtn = document.getElementById("revealBtn");
+  const nextBtn = document.getElementById("nextBtn");
+
+  function loadCharacter(index) {
+    const character = characters[index];
+    animeImage.src = character.img;
+    animeImage.classList.remove("reveal");
+    answer.textContent = "";
+  }
+
+  revealBtn.addEventListener("click", () => {
+    animeImage.classList.add("reveal");
+    answer.textContent = characters[currentIndex].name;
+  });
+
+  nextBtn.addEventListener("click", () => {
+    currentIndex = (currentIndex + 1) % characters.length;
+    loadCharacter(currentIndex);
+  });
+
+  // Load first character initially
+  loadCharacter(currentIndex);
+</script>
+
+</body>
+</html>
