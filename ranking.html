@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Class Anime Ranking</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header>
+    <h1>Class Anime Ranking</h1>
+</header>
+
+<nav>
+    <a href="anime.html">Home</a>
+</nav>
+
+<section class="intro">
+    <h2>Rate the Animes</h2>
+    <p>Each student can enter their scores (1–10). Then click "Calculate Results".</p>
+</section>
+
+<section class="ranking">
+
+    <div>
+        <label>Tokyo Ghoul:</label>
+        <input type="number" id="tokyo" min="1" max="10">
+    </div>
+
+    <div>
+        <label>Solo Leveling:</label>
+        <input type="number" id="solo" min="1" max="10">
+    </div>
+
+    <div>
+        <label>Jujutsu Kaisen:</label>
+        <input type="number" id="jujutsu" min="1" max="10">
+    </div>
+
+    <div>
+        <label>Black Clover:</label>
+        <input type="number" id="black" min="1" max="10">
+    </div>
+
+    <button onclick="addVote()">Add Vote</button>
+    <button onclick="calculateResults()">Calculate Results</button>
+
+</section>
+
+<section>
+    <h2>Results:</h2>
+    <p id="averages"></p>
+    <h3 id="winner"></h3>
+</section>
+
+<footer>
+    <p>© 2026 My Anime Page</p>
+</footer>
+
+<script>
+let votes = [];
+
+function addVote() {
+    let vote = {
+        tokyo: Number(document.getElementById("tokyo").value),
+        solo: Number(document.getElementById("solo").value),
+        jujutsu: Number(document.getElementById("jujutsu").value),
+        black: Number(document.getElementById("black").value)
+    };
+
+    votes.push(vote);
+
+    alert("Vote added!");
+
+    // Clear inputs
+    document.getElementById("tokyo").value = "";
+    document.getElementById("solo").value = "";
+    document.getElementById("jujutsu").value = "";
+    document.getElementById("black").value = "";
+}
+
+function calculateResults() {
+    if (votes.length === 0) {
+        alert("No votes yet!");
+        return;
+    }
+
+    let total = { tokyo: 0, solo: 0, jujutsu: 0, black: 0 };
+
+    votes.forEach(v => {
+        total.tokyo += v.tokyo;
+        total.solo += v.solo;
+        total.jujutsu += v.jujutsu;
+        total.black += v.black;
+    });
+
+    let avg = {
+        tokyo: (total.tokyo / votes.length).toFixed(2),
+        solo: (total.solo / votes.length).toFixed(2),
+        jujutsu: (total.jujutsu / votes.length).toFixed(2),
+        black: (total.black / votes.length).toFixed(2)
+    };
+
+    document.getElementById("averages").innerHTML =
+        "Tokyo Ghoul: " + avg.tokyo + "<br>" +
+        "Solo Leveling: " + avg.solo + "<br>" +
+        "Jujutsu Kaisen: " + avg.jujutsu + "<br>" +
+        "Black Clover: " + avg.black;
+
+    // Determine winner
+    let winner = Object.entries(avg).sort((a, b) => b[1] - a[1])[0];
+
+    document.getElementById("winner").innerHTML =
+        "🏆 Winner: " + winner[0].toUpperCase();
+}
+</script>
+
+</body>
+</html>
